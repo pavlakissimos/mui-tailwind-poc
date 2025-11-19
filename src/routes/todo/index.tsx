@@ -106,11 +106,9 @@ function RouteComponent() {
 					<Typography
 						variant="h2"
 						component="h1"
+						fontWeight={700} // should be overidden by tailwind
 						color="primary"
-						sx={{
-							textShadow: "0 0 20px rgba(252, 227, 0, 0.3)",
-						}}
-						className="mb-1 text-3xl sm:text-4xl md:text-5xl"
+						className="mb-1 font-thin"
 					>
 						Night City Tasks
 					</Typography>

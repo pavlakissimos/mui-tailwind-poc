@@ -1,32 +1,28 @@
 import CssBaseline from "@mui/material/CssBaseline";
-import { ThemeProvider } from "@mui/material/styles";
+import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
 import { createRouter } from "@tanstack/react-router";
 import { setupRouterSsrQueryIntegration } from "@tanstack/react-router-ssr-query";
 import { type PropsWithChildren, useEffect } from "react";
 
 import * as TanstackQuery from "./integrations/tanstack-query/root-provider";
-import { generateCSSVariables } from "./lib/designSystem/cssVariables";
 import { useThemeMode } from "./lib/designSystem/useThemeMode";
 import { routeTree } from "./routeTree.gen";
 
 const Theme = ({ children }: PropsWithChildren) => {
 	const { mode, theme } = useThemeMode();
 
-	// Inject CSS variables when mode changes
+	// Set data-theme attribute for CSS-based theme switching
 	useEffect(() => {
-		const root = document.documentElement;
-		const variables = generateCSSVariables(mode);
-
-		Object.entries(variables).forEach(([key, value]) => {
-			root.style.setProperty(key, value);
-		});
+		document.documentElement.setAttribute("data-theme", mode);
 	}, [mode]);
 
 	return (
-		<ThemeProvider theme={theme}>
-			<CssBaseline />
-			{children}
-		</ThemeProvider>
+		<StyledEngineProvider enableCssLayer>
+			<ThemeProvider theme={theme}>
+				<CssBaseline />
+				{children}
+			</ThemeProvider>
+		</StyledEngineProvider>
 	);
 };
 
