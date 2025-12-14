@@ -1,9 +1,6 @@
-// design-system/cssVariables.ts
-import { semanticTokens, tokens } from "./tokens";
+import { tokens } from "./tokens";
 
-export const generateCSSVariables = (mode: "light" | "dark") => {
-	const semantic =
-		mode === "light" ? semanticTokens.light : semanticTokens.dark;
+const generateCSSVariables = () => {
 	const cssVars: Record<string, string> = {};
 
 	// Generate color variables
@@ -35,12 +32,20 @@ export const generateCSSVariables = (mode: "light" | "dark") => {
 		cssVars[`--font-weight-${key}`] = String(value);
 	});
 
-	// Add semantic tokens (these change based on mode)
-	cssVars["--color-background-default"] = semantic.background.default;
-	cssVars["--color-background-paper"] = semantic.background.paper;
-	cssVars["--color-text-primary"] = semantic.text.primary;
-	cssVars["--color-text-secondary"] = semantic.text.secondary;
-	cssVars["--color-text-disabled"] = semantic.text.disabled;
-
 	return cssVars;
 };
+
+export function setupTw() {
+	const cssVars = generateCSSVariables();
+	const sheet = new CSSStyleSheet();
+	sheet.replaceSync(`
+    @layer theme {
+      :root {
+        ${Object.entries(cssVars)
+					.map(([key, value]) => `${key}: ${value};`)
+					.join("")}
+      }
+    }
+  `);
+	document.adoptedStyleSheets = [...document.adoptedStyleSheets, sheet];
+}
