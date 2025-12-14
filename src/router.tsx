@@ -2,11 +2,19 @@ import CssBaseline from "@mui/material/CssBaseline";
 import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
 import { createRouter } from "@tanstack/react-router";
 import { setupRouterSsrQueryIntegration } from "@tanstack/react-router-ssr-query";
+import { createIsomorphicFn } from "@tanstack/react-start";
 import { type PropsWithChildren, useEffect } from "react";
 
 import * as TanstackQuery from "./integrations/tanstack-query/root-provider";
+import { setupTw } from "./lib/designSystem/tw";
 import { useThemeMode } from "./lib/designSystem/useThemeMode";
 import { routeTree } from "./routeTree.gen";
+
+const isoTwSetup = createIsomorphicFn()
+	.server(() => {})
+	.client(() => setupTw());
+
+isoTwSetup();
 
 const Theme = ({ children }: PropsWithChildren) => {
 	const { mode, theme } = useThemeMode();

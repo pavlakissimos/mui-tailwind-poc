@@ -1,7 +1,7 @@
 // design-system/tokens.ts - Cyberpunk 2077 Design System
 export const tokens = {
 	colors: {
-		primary: {
+		yellow: {
 			50: "#FFFBEB",
 			100: "#FEF3C7",
 			200: "#FDE68A",
@@ -13,7 +13,7 @@ export const tokens = {
 			800: "#92400E",
 			900: "#78350F",
 		},
-		secondary: {
+		cyan: {
 			50: "#ECFEFF",
 			100: "#CFFAFE",
 			200: "#A5F3FC",
@@ -25,7 +25,7 @@ export const tokens = {
 			800: "#155E75",
 			900: "#164E63",
 		},
-		accent: {
+		pink: {
 			50: "#FDF2F8",
 			100: "#FCE7F3",
 			200: "#FBCFE8",
@@ -61,7 +61,7 @@ export const tokens = {
 			800: "#1F2937",
 			900: "#111827",
 		},
-		dark: {
+		black: {
 			50: "#2D2D2D",
 			100: "#252525",
 			200: "#1E1E1E",
@@ -73,25 +73,53 @@ export const tokens = {
 			800: "#050505",
 			900: "#000000",
 		},
-		success: {
-			light: "#6EE7B7",
-			main: "#10B981", // green for "connected"
-			dark: "#047857",
+		green: {
+			50: "#ECFDF5",
+			100: "#D1FAE5",
+			200: "#A7F3D0",
+			300: "#6EE7B7",
+			400: "#34D399",
+			500: "#10B981", // green for "connected"
+			600: "#059669",
+			700: "#047857",
+			800: "#065F46",
+			900: "#064E3B",
 		},
-		error: {
-			light: "#FCA5A5",
-			main: "#EF4444", // red for "disconnected/danger"
-			dark: "#B91C1C",
+		red: {
+			50: "#FEF2F2",
+			100: "#FEE2E2",
+			200: "#FECACA",
+			300: "#FCA5A5",
+			400: "#F87171",
+			500: "#EF4444", // red for "disconnected/danger"
+			600: "#DC2626",
+			700: "#B91C1C",
+			800: "#991B1B",
+			900: "#7F1D1D",
 		},
-		warning: {
-			light: "#FCD34D",
-			main: "#F59E0B", // amber warnings
-			dark: "#D97706",
+		amber: {
+			50: "#FFFBEB",
+			100: "#FEF3C7",
+			200: "#FDE68A",
+			300: "#FCD34D",
+			400: "#FCA21B",
+			500: "#F59E0B", // amber warnings
+			600: "#D97706",
+			700: "#B45309",
+			800: "#92400E",
+			900: "#78350F",
 		},
-		info: {
-			light: "#67E8F9",
-			main: "#06B6D4", // cyan info
-			dark: "#0E7490",
+		teal: {
+			50: "#F0FDFA",
+			100: "#CCFBF1",
+			200: "#99F6E4",
+			300: "#5EEAD4",
+			400: "#2DD4BF",
+			500: "#14B8A6",
+			600: "#0D9488",
+			700: "#0F766E",
+			800: "#115E59",
+			900: "#134E4A",
 		},
 	},
 	spacing: {
@@ -163,31 +191,6 @@ export const tokens = {
 		scanlines: {
 			backgroundImage:
 				"repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15) 1px, transparent 1px, transparent 2px)",
-		},
-	},
-};
-
-export const semanticTokens = {
-	light: {
-		background: {
-			default: tokens.colors.grey[100],
-			paper: tokens.colors.grey[50],
-		},
-		text: {
-			primary: tokens.colors.dark[900],
-			secondary: tokens.colors.grey[700],
-			disabled: tokens.colors.grey[400],
-		},
-	},
-	dark: {
-		background: {
-			default: tokens.colors.dark[500], // Deep black
-			paper: tokens.colors.dark[400], // Slightly lighter for cards
-		},
-		text: {
-			primary: tokens.colors.grey[50], // Bright white text
-			secondary: tokens.colors.grey[400], // Dimmed text
-			disabled: tokens.colors.grey[600],
 		},
 	},
 };
